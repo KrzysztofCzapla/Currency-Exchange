@@ -1,0 +1,54 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+
+<div class="box container">         
+	 <form class="" action="" method="POST">
+
+		{% csrf_token %}
+		<div class="row">
+			<div class="text-center col-xl">
+				<h2 class="text-center ">From</h2>
+				<select name="currency_from" class="select ">
+				   {% for c in currency_data %}
+						<option value="{{c.code}}">{{c.currency}}</option>
+				   {% endfor %}
+				</select>
+			</div>
+
+			<div class=" col-xl">
+				<h2 class="text-center">Amount</h2>
+				<input id="amount" type="text" name="amount" class="data" value="">
+			</div>
+			
+			<div class="text-center col-xl">
+				<h2 class="text-center">To</h2>
+				<select name="currency_to" class="select">
+				   {% for c in currency_data %}
+						<option  class="select" value="{{c.code}}">{{c.currency}}</option>
+				   {% endfor %}
+				</select>  
+			</div>
+			
+		</div>
+		<div class="row justify-content-center">
+				<input class="btn " type="submit" value="Convert"> 
+			</div>
+		<div class="button13 row justify-content-around">
+			
+			<div class="col-4">
+				{% if result %}
+					<div class=" text-center">
+						<h2>Result</h2>
+						<h3>{{result}}</h3>
+					</div>
+				{% endif %}
+			</div>
+		</div>
+	</form><br>
+	
+	
+</div>
+
+
+{% endblock %}
